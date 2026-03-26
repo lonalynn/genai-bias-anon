@@ -20,7 +20,7 @@ Further details about the contents of these folders (and their subfolders) can b
 
 Our full dotplots can be found at `analysis/dotplots/results`.
 
-Our entropy (modal v. distributional analysis scripts are located at `analysis/entropy/modal_distributional_results.csv`
+Our entropy (modal v. distributional) analyses are located at `analysis/entropy/modal_distributional_results.csv`
 
 Here are our regression plots...
 - by individual model: `analysis/logistic-regression-scripts/results/plots-by-model`
