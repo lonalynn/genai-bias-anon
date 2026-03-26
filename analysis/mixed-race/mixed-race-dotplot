@@ -1,0 +1,189 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from pathlib import Path
+
+# ----------------------------
+# CONFIG
+# ----------------------------
+INPUT_CSV = "mixed_race_differences_vs_bls.csv"
+
+# Column name → display label  (must match columns in INPUT_CSV)
+MODEL_COL_MAP = {
+    "diff_p_mixed_openai":   "GPT 4.0",
+    "diff_p_mixed_gemini":   "Gemini 2.5",
+    "diff_p_mixed_deepseek": "DeepSeek V3.1",
+    "diff_p_mixed_mistral":  "Mistral-medium",
+}
+DISPLAY_ORDER = ["GPT 4.0", "Gemini 2.5", "DeepSeek V3.1", "Mistral-medium"]
+
+OUTPUT_PDF = "occupational_bias_mixed_race.pdf"
+
+# ----------------------------
+# Helpers
+# ----------------------------
+def smart_offsets(values_dict, tol=3.0, base_jitter=0.18):
+    keys = list(values_dict.keys())
+    used, groups = set(), []
+    for i, k in enumerate(keys):
+        if k in used:
+            continue
+        group = [k]; used.add(k)
+        for j in range(i + 1, len(keys)):
+            k2 = keys[j]
+            if k2 in used:
+                continue
+            if pd.notna(values_dict[k]) and pd.notna(values_dict[k2]):
+                if abs(values_dict[k] - values_dict[k2]) <= tol:
+                    group.append(k2); used.add(k2)
+        groups.append(group)
+
+    offsets = {k: 0.0 for k in keys}
+    for g in groups:
+        if len(g) == 1:
+            continue
+        start = -(len(g) / 2 - 0.5) if len(g) % 2 == 0 else -(len(g) // 2)
+        for i, name in enumerate(sorted(g)):
+            offsets[name] = (start + i) * base_jitter
+    return offsets
+
+# ----------------------------
+# Load & reshape
+# ----------------------------
+df = pd.read_csv(INPUT_CSV)
+df["occ_key"] = df["occupation"].astype(str).str.strip()
+
+frames = []
+for col, display_name in MODEL_COL_MAP.items():
+    if col not in df.columns:
+        print(f"WARNING: column '{col}' not found in {INPUT_CSV} — skipping")
+        continue
+    frames.append(
+        df[["occ_key", col]]
+        .rename(columns={col: "diff"})
+        .assign(model=display_name)
+    )
+
+all_long = pd.concat(frames, ignore_index=True)
+
+# ----------------------------
+# Occupation labels & ordering
+# ----------------------------
+OCCUPATION_LABELS = [
+    "administrative assistant", "author", "bartender", "biologist", "building inspector",
+    "bus driver", "butcher", "chef", "chemist", "chief executive officer", "childcare worker",
+    "computer programmer", "construction worker", "cook", "crane operator", "custodian",
+    "customer service representative", "doctor", "drafter", "electrician", "engineer",
+    "garbage collector", "housekeeper", "insurance sales agent", "lab tech", "librarian",
+    "mail carrier", "nurse", "nurse practitioner", "pharmacist", "pilot", "plumber",
+    "police officer", "primary school teacher", "receptionist", "roofer", "security guard",
+    "software developer", "special ed teacher", "truck driver", "welder",
+]
+
+occ_keys = sorted(all_long["occ_key"].unique())
+clean_label_map = {k: v.title() for k, v in zip(occ_keys, OCCUPATION_LABELS)}
+
+# Order occupations by average mixed-race diff across all models (top → bottom)
+occ_means = (
+    all_long.groupby("occ_key")["diff"]
+    .mean()
+    .sort_values(ascending=False)
+)
+ordered_occ_keys = list(occ_means.index)
+
+# ----------------------------
+# Prepare wide table
+# ----------------------------
+wide = all_long.pivot_table(index="occ_key", columns="model", values="diff", aggfunc="mean")
+wide = wide.reindex(ordered_occ_keys)
+for m in DISPLAY_ORDER:
+    if m not in wide.columns:
+        wide[m] = np.nan
+wide = wide[DISPLAY_ORDER]
+
+avg = (
+    all_long.groupby("model")["diff"]
+    .mean()
+    .reindex(DISPLAY_ORDER)
+    .rename("__AVG__")
+    .to_frame().T
+)
+
+wide = pd.concat([avg, wide])
+
+# ----------------------------
+# Plot
+# ----------------------------
+markers = {
+    "GPT 4.0":        "o",
+    "DeepSeek V3.1":  "D",
+    "Gemini 2.5":     "s",
+    "Mistral-medium": "^",
+}
+colors = {
+    "GPT 4.0":        "#0072B2",
+    "DeepSeek V3.1":  "#009E73",
+    "Gemini 2.5":     "#E69F00",
+    "Mistral-medium": "#CC79A7",
+}
+
+ykeys  = ["__AVG__"] + ordered_occ_keys
+ylabels = ["Average"] + [clean_label_map.get(k, k) for k in ordered_occ_keys]
+y = np.arange(len(ykeys))
+
+fig, ax = plt.subplots(figsize=(10, 18))
+
+ax.axvline(0, linestyle="--", linewidth=1)
+ax.set_xlim(-100, 100)
+ax.set_yticks(y)
+ax.set_yticklabels(ylabels, fontsize=12)
+ax.tick_params(axis="x", labelsize=12)
+ax.set_ylim(len(y) - 0.5, -0.5)
+
+for yi, key in enumerate(ykeys):
+    vals = {m: wide.loc[key, m] for m in DISPLAY_ORDER}
+    offsets = smart_offsets(vals)
+
+    for m in DISPLAY_ORDER:
+        if pd.isna(vals[m]):
+            continue
+        ax.scatter(
+            vals[m], yi + offsets[m],
+            marker=markers[m],
+            color=colors[m],
+            s=55 if key == "__AVG__" else 42,
+            edgecolor="black",
+            linewidths=0.4,
+            label=m if key == "__AVG__" else None,
+            zorder=3,
+        )
+
+ax.axhline(0.5, linestyle="--", color="gray", alpha=0.6)
+ax.grid(axis="x", linestyle=":", alpha=0.7)
+
+# Bold the "Average" y-tick label
+for tick in ax.yaxis.get_ticklabels():
+    if tick.get_text() == "Average":
+        tick.set_fontweight("bold")
+
+fig.suptitle(
+    "Per-Occupation Representation vs. BLS — Mixed Race",
+    fontsize=22,
+    fontweight="bold",
+    y=0.99,
+)
+fig.supxlabel("Difference from BLS (percentage-point difference)", fontsize=14, y=0.02)
+
+handles, labels = ax.get_legend_handles_labels()
+fig.legend(
+    handles, labels,
+    title="Model",
+    loc="upper left",
+    bbox_to_anchor=(0.01, 0.97),
+    fontsize=12,
+    title_fontsize=14,
+)
+
+plt.tight_layout(rect=[0.03, 0.05, 0.98, 0.96])
+plt.savefig(OUTPUT_PDF, bbox_inches="tight")
+print(f"Saved figure: {Path(OUTPUT_PDF).resolve()}")
