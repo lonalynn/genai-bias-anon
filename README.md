@@ -14,17 +14,17 @@ Further details about the contents of these folders (and their subfolders) can b
 
 ### Quick Links to Key Supplementary Data
 
-Regression results (pooled across all models) for all methods (raw, trimmed, and robust regression). As the primary specification, only robust regression results are reported in the published paper: [https://anonymous.4open.science/r/repbias-CHI26/analysis/logistic-regression-scripts/results/published-csvs/regression_results_averaged_with_methods.csv](https://anonymous.4open.science/r/repbias-CHI26/analysis/logistic-regression-scripts/results/published-csvs/regression_results_averaged_with_methods.csv)
+[Regression results (pooled across all models) for all methods (raw, trimmed, and robust regression).](https://anonymous.4open.science/r/repbias-CHI26/analysis/logistic-regression-scripts/results/published-csvs/regression_results_averaged_with_methods.csv) As the primary specification, only robust regression results are reported in the published paper, but complete regressions are available both here and in appendices.
 
-Regression results (by model) for all methods (raw, trimmed, and robust regression): 
-[https://anonymous.4open.science/r/repbias-CHI26/analysis/logistic-regression-scripts/results/published-csvs/regression_results_all_models_with_methods.csv]([https://anonymous.4open.science/r/repbias-CHI26/analysis/logistic-regression-scripts/results/published-csvs/regression_results_all_models_with_methods.csv)
+[Regression results (by model) for all methods (raw, trimmed, and robust regression)](https://anonymous.4open.science/r/repbias-CHI26/analysis/logistic-regression-scripts/results/published-csvs/regression_results_all_models_with_methods.csv)
 
-Our published dotplots can be found at `analysis/dotplots/results`.
+Our full dotplots can be found at `analysis/dotplots/results`.
+
+Our entropy (modal v. distributional analysis scripts are located at `analysis/entropy/modal_distributional_results.csv`
 
 Here are our regression plots...
 - by individual model: `analysis/logistic-regression-scripts/results/plots-by-model`
 - averaged across all models: `analysis/logistic-regression-scripts/results/plots_averaged`
-
 
 ### System & User Prompts
 
