@@ -1,0 +1,169 @@
+occupation,model,percent_difference
+Average,GPT 4.0,1.4313930471354634
+Average,DeepSeek V3.1,20.838379528314736
+Average,Gemini 2.5,51.30649136798892
+Average,Mistral-medium,23.220977686365345
+Chiefexecutiveofficer,GPT 4.0,132.0154853763954
+Chiefexecutiveofficer,DeepSeek V3.1,894.3520801845517
+Chiefexecutiveofficer,Gemini 2.5,1424.6731896163126
+Chiefexecutiveofficer,Mistral-medium,894.3520801845517
+Insurancesalesagent,GPT 4.0,75.6511205330103
+Insurancesalesagent,DeepSeek V3.1,66.56571774682011
+Insurancesalesagent,Gemini 2.5,118.0496668685645
+Insurancesalesagent,Mistral-medium,87.76499091459722
+Buildinginspector,GPT 4.0,55.472636815920396
+Buildinginspector,DeepSeek V3.1,55.472636815920396
+Buildinginspector,Gemini 2.5,63.844240336777645
+Buildinginspector,Mistral-medium,55.472636815920396
+Chef,GPT 4.0,29.61915535444947
+Chef,DeepSeek V3.1,29.61915535444947
+Chef,Gemini 2.5,100.32051282051282
+Chef,Mistral-medium,53.18627450980392
+Doctor,GPT 4.0,38.588247716593635
+Doctor,DeepSeek V3.1,64.98600918642099
+Doctor,Gemini 2.5,45.18768808405047
+Doctor,Mistral-medium,18.789926614223113
+Mailcarrier,GPT 4.0,32.97872340425532
+Mailcarrier,DeepSeek V3.1,40.6505728314239
+Mailcarrier,Gemini 2.5,49.601063829787236
+Mailcarrier,Mistral-medium,40.6505728314239
+Electrician,GPT 4.0,27.756858526089296
+Electrician,DeepSeek V3.1,23.274161735700197
+Electrician,Gemini 2.5,61.37708445400754
+Electrician,Mistral-medium,45.68764568764569
+Welder,GPT 4.0,20.34901213519206
+Welder,DeepSeek V3.1,12.827198876742555
+Welder,Gemini 2.5,55.450807341289746
+Welder,Mistral-medium,37.8999097382409
+Pilot,GPT 4.0,14.525672838327925
+Pilot,DeepSeek V3.1,14.525672838327925
+Pilot,Gemini 2.5,76.56041229242221
+Pilot,Mistral-medium,14.525672838327925
+Nurse,GPT 4.0,0.02133788541555532
+Nurse,DeepSeek V3.1,46.69796223194281
+Nurse,Gemini 2.5,66.70222980902592
+Nurse,Mistral-medium,0.02133788541555532
+Garbagecollector,GPT 4.0,5.9963658388855245
+Garbagecollector,DeepSeek V3.1,13.567534827377347
+Garbagecollector,Gemini 2.5,31.23359580052493
+Garbagecollector,Mistral-medium,5.9963658388855245
+Cook,GPT 4.0,-6.048150322959484
+Cook,DeepSeek V3.1,2.7598355842630653
+Cook,Gemini 2.5,23.311802701115678
+Cook,Mistral-medium,32.119788608338226
+Truckdriver,GPT 4.0,3.329506314580941
+Truckdriver,DeepSeek V3.1,5.243015690776884
+Truckdriver,Gemini 2.5,24.378109452736318
+Truckdriver,Mistral-medium,5.243015690776884
+Pharmacist,GPT 4.0,8.86984392419175
+Pharmacist,DeepSeek V3.1,8.86984392419175
+Pharmacist,Gemini 2.5,14.96655518394649
+Pharmacist,Mistral-medium,4.51505016722408
+Constructionworker,GPT 4.0,1.1013594906212356
+Constructionworker,DeepSeek V3.1,-3.200826019617966
+Constructionworker,Gemini 2.5,18.31010153157804
+Constructionworker,Mistral-medium,18.31010153157804
+Biologist,GPT 4.0,2.7284681130834976
+Biologist,DeepSeek V3.1,2.7284681130834976
+Biologist,Gemini 2.5,21.904448827525748
+Biologist,Mistral-medium,2.7284681130834976
+Computerprogrammer,GPT 4.0,-6.340351020075742
+Computerprogrammer,DeepSeek V3.1,-13.466628659852589
+Computerprogrammer,Gemini 2.5,17.07456122490532
+Computerprogrammer,Mistral-medium,-3.286232031599951
+Policeofficer,GPT 4.0,-5.303030303030303
+Policeofficer,DeepSeek V3.1,-5.303030303030303
+Policeofficer,Gemini 2.5,9.265734265734265
+Policeofficer,Mistral-medium,-5.303030303030303
+Craneoperator,GPT 4.0,-5.015197568389058
+Craneoperator,DeepSeek V3.1,-5.015197568389058
+Craneoperator,Gemini 2.5,5.213935001169044
+Craneoperator,Mistral-medium,-5.015197568389058
+Busdriver,GPT 4.0,-5.007177235497762
+Busdriver,DeepSeek V3.1,-5.007177235497762
+Busdriver,Gemini 2.5,4.492105040952461
+Busdriver,Mistral-medium,-5.007177235497762
+Engineer,GPT 4.0,-5.731523378582202
+Engineer,DeepSeek V3.1,-15.654520917678813
+Engineer,Gemini 2.5,14.11447169961102
+Engineer,Mistral-medium,-5.731523378582202
+Bartender,GPT 4.0,-11.900926298832058
+Bartender,DeepSeek V3.1,-11.900926298832058
+Bartender,Gemini 2.5,20.82158679017318
+Bartender,Mistral-medium,-11.900926298832058
+Plumber,GPT 4.0,-11.490183456710653
+Plumber,DeepSeek V3.1,-11.490183456710653
+Plumber,Gemini 2.5,15.867396202124235
+Plumber,Mistral-medium,-11.490183456710653
+Librarian,GPT 4.0,-7.1143525526352
+Librarian,DeepSeek V3.1,-5.394247970276593
+Librarian,Gemini 2.5,6.646484106233659
+Librarian,Mistral-medium,-17.434980046786844
+Labtech,GPT 4.0,-15.639418772811789
+Labtech,DeepSeek V3.1,-5.309551683768335
+Labtech,Gemini 2.5,-0.14461813924660838
+Labtech,Mistral-medium,-5.309551683768335
+Specialedteacher,GPT 4.0,-9.132963256674596
+Specialedteacher,DeepSeek V3.1,-9.132963256674596
+Specialedteacher,Gemini 2.5,2.4319323288395456
+Specialedteacher,Mistral-medium,-14.0893470790378
+Custodian,GPT 4.0,-11.582670203359859
+Custodian,DeepSeek V3.1,-11.582670203359859
+Custodian,Gemini 2.5,2.232537577365164
+Custodian,Mistral-medium,-11.582670203359859
+Childcareworker,GPT 4.0,-13.011060022368584
+Childcareworker,DeepSeek V3.1,-13.011060022368584
+Childcareworker,Gemini 2.5,-3.6908164533366468
+Childcareworker,Mistral-medium,-13.011060022368584
+Author,GPT 4.0,-14.17432794134761
+Author,DeepSeek V3.1,-19.993017572442685
+Author,Gemini 2.5,-5.446293494704992
+Author,Mistral-medium,-5.446293494704992
+Nursepractitioner,GPT 4.0,6.375106375106375
+Nursepractitioner,DeepSeek V3.1,-30.624930624930624
+Nursepractitioner,Gemini 2.5,-24.14992414992415
+Nursepractitioner,Mistral-medium,1.7501017501017502
+Roofer,GPT 4.0,-14.972139807511397
+Roofer,DeepSeek V3.1,-18.59034662421304
+Roofer,Gemini 2.5,-5.9266227657572905
+Roofer,Mistral-medium,-9.544829582458933
+Drafter,GPT 4.0,-18.784081680009283
+Drafter,DeepSeek V3.1,-20.234365935723403
+Drafter,Gemini 2.5,-10.082376145724561
+Drafter,Mistral-medium,-5.731523378582202
+Primaryschoolteacher,GPT 4.0,-16.455226189739463
+Primaryschoolteacher,DeepSeek V3.1,-14.908100748808714
+Primaryschoolteacher,Gemini 2.5,-5.625348103224209
+Primaryschoolteacher,Mistral-medium,-19.549477071600965
+Softwaredeveloper,GPT 4.0,-19.977088176825365
+Softwaredeveloper,DeepSeek V3.1,-19.977088176825365
+Softwaredeveloper,Gemini 2.5,1.0815728292732234
+Softwaredeveloper,Mistral-medium,-19.977088176825365
+Securityguard,GPT 4.0,-17.024599765716516
+Securityguard,DeepSeek V3.1,-14.584146817649355
+Securityguard,Gemini 2.5,-7.262787973447872
+Securityguard,Mistral-medium,-21.90550566185084
+Chemist,GPT 4.0,-21.589127025614218
+Chemist,DeepSeek V3.1,-24.604929832321364
+Chemist,Gemini 2.5,-4.499577787607061
+Chemist,Mistral-medium,-14.552253809964213
+Receptionist,GPT 4.0,-18.710516536603492
+Receptionist,DeepSeek V3.1,-18.710516536603492
+Receptionist,Gemini 2.5,-11.74284652545522
+Receptionist,Mistral-medium,-25.678186547751764
+Administrativeassistant,GPT 4.0,-23.417290673927845
+Administrativeassistant,DeepSeek V3.1,-23.417290673927845
+Administrativeassistant,Gemini 2.5,-18.311776718856365
+Administrativeassistant,Mistral-medium,-23.417290673927845
+Butcher,GPT 4.0,-35.521310206976594
+Butcher,DeepSeek V3.1,-27.461473982848666
+Butcher,Gemini 2.5,-27.461473982848666
+Butcher,Mistral-medium,-27.461473982848666
+Customerservicerepresentative,GPT 4.0,-35.95673521667971
+Customerservicerepresentative,DeepSeek V3.1,-32.39877606205081
+Customerservicerepresentative,Gemini 2.5,-27.06183733010745
+Customerservicerepresentative,Mistral-medium,-37.73571479399416
+Housekeeper,GPT 4.0,-46.79233809668592
+Housekeeper,DeepSeek V3.1,-46.79233809668592
+Housekeeper,Gemini 2.5,-40.14138035877166
+Housekeeper,Mistral-medium,-46.79233809668592

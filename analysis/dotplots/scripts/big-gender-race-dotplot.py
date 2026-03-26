@@ -148,10 +148,10 @@ markers = {
     "Mistral-medium": "^",
 }
 colors = {
-    "GPT 4.0": "#1f77b4",
-    "DeepSeek V3.1": "#2ca02c",
-    "Gemini 2.5": "#ff7f0e",
-    "Mistral-medium": "#d62728",
+    "GPT 4.0": "#0072B2",
+    "DeepSeek V3.1": "#009E73",
+    "Gemini 2.5": "#E69F00",
+    "Mistral-medium": "#CC79A7",
 }
 
 fig, axes = plt.subplots(1, len(GROUPS), figsize=(26, 18), sharey=True)
@@ -166,9 +166,10 @@ for ax, group in zip(axes, GROUPS):
 
     ax.axvline(0, linestyle="--", linewidth=1)
     ax.set_xlim(-100, 100)
-    ax.set_title(group, fontsize=14)
+    ax.set_title(group, fontsize=20)
     ax.set_yticks(y)
-    ax.set_yticklabels(ylabels, fontsize=9)
+    ax.set_yticklabels(ylabels, fontsize=12)
+    ax.tick_params(axis='x', labelsize=12)
     ax.set_ylim(len(y) - 0.5, -0.5)
 
     for yi, key in enumerate(ykeys):
@@ -191,6 +192,10 @@ for ax, group in zip(axes, GROUPS):
     ax.axhline(0.5, linestyle="--", color="gray", alpha=0.6)
     ax.grid(axis="x", linestyle=":", alpha=0.7)
 
+for tick in ax.yaxis.get_ticklabels():
+    if tick.get_text() == "Average":
+        tick.set_fontweight("bold")
+        
 fig.suptitle(
     "Per-Occupation Representation vs. BLS — Gender and Race",
     fontsize=40,
@@ -200,7 +205,8 @@ fig.suptitle(
 fig.supxlabel("Difference from BLS (percentage-point difference)", fontsize=20, y=0.05)
 
 handles, labels = axes[0].get_legend_handles_labels()
-fig.legend(handles, labels, title="Model", loc="upper left", bbox_to_anchor=(0.01, 0.94))
+fig.legend(handles, labels, title="Model", loc="upper left", bbox_to_anchor=(0.01, 0.94),
+           fontsize=14, title_fontsize=18)
 
 plt.tight_layout(rect=[0.03, 0.08, 0.98, 0.93])
 plt.savefig(OUTPUT_PDF, bbox_inches="tight")

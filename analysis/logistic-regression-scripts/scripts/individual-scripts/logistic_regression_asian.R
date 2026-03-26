@@ -1,6 +1,8 @@
 library(visreg)
 
-proportions <- read.csv("../percent-results/results_vs_BLS/averaged_differences_vs_BLS.csv")
+setwd("C:/Users/Lonalynn/Desktop/SCU/HCI/genai-bias/analysis/logistic-regression-scripts/scripts/individual-scripts/")
+proportions <- read.csv("../../percent-results/results_vs_BLS/averaged_differences_vs_BLS.csv")
+
 m_asian.stereotyped <- glm(
   genai_p_asian ~ I(bls_p_asian - 0.5),
   family = quasibinomial,
@@ -12,7 +14,7 @@ pdf("logreg_asian.pdf", width = 8, height = 6)
 par(
   cex.main = 1.5,
   cex.lab  = 1.5,
-  cex.axis = 1.3,
+  cex.axis = 1.5,
   mar      = c(5, 5, 4, 2)
 )
 

@@ -8,10 +8,10 @@ from pathlib import Path
 # CONFIG: paths to your CSVs
 # ----------------------------
 MODEL_FILES = {
-    "ChatGPT":  "percent-results/results_vs_BLS/openai_differences_vs_bls.csv",
-    "Gemini":   "percent-results/results_vs_BLS/gemini_differences_vs_bls.csv",
-    "DeepSeek": "percent-results/results_vs_BLS/deepseek_differences_vs_bls.csv",
-    "Mistral":  "percent-results/results_vs_BLS/mistral_differences_vs_bls.csv",
+    "ChatGPT":  "../../percent-results/results_vs_BLS/openai_differences_vs_bls.csv",
+    "Gemini":   "../../percent-results/results_vs_BLS/gemini_differences_vs_bls.csv",
+    "DeepSeek": "../../percent-results/results_vs_BLS/deepseek_differences_vs_bls.csv",
+    "Mistral":  "../../percent-results/results_vs_BLS/mistral_differences_vs_bls.csv",
 }
 
 # Desired display names and plotting order
@@ -215,10 +215,11 @@ def plot_matrix_women(by_women, title, outfile, xlab="Difference from BLS (perce
 
     ax.axvline(0, linewidth=1, linestyle="--")
     ax.set_xlim(-100, 100)
-    ax.set_title("Women", fontsize=14, pad=8)
+    ax.set_title("Women", fontsize=20, pad=8)
     ax.set_yticks(y)
-    ax.set_yticklabels(ylabels, fontsize=9)
+    ax.set_yticklabels(ylabels, fontsize=12) # font change
     ax.set_ylim(len(y) - 0.5, -0.5)  # Average at top
+    ax.tick_params(axis='x', labelsize=12)  # ← change 12
 
     for tick in ax.yaxis.get_ticklabels():
         if tick.get_text() == "Average":
@@ -246,7 +247,7 @@ def plot_matrix_women(by_women, title, outfile, xlab="Difference from BLS (perce
 
     # Title + shared x-label
     fig.suptitle(title, fontsize=40, fontweight="bold", y=0.965)
-    fig.supxlabel(xlab, fontsize=20, y=0.06)
+    fig.supxlabel(xlab, fontsize=20, y=0.06) #font change
 
     # Single shared legend under the title, left
     handles, labels = ax.get_legend_handles_labels()
@@ -255,7 +256,9 @@ def plot_matrix_women(by_women, title, outfile, xlab="Difference from BLS (perce
         title="Model",
         loc="upper left",
         bbox_to_anchor=(0.01, 0.90),
-        frameon=True
+        frameon=True,
+        fontsize=14,
+        title_fontsize=18
     )
 
     plt.tight_layout(rect=[0.03, 0.08, 0.98, 0.93])
@@ -267,7 +270,7 @@ def plot_averages_only_women(by_women, title, outfile, xlab="Difference from BLS
     row = by_women.loc["__AVG__"].reindex(DISPLAY_ORDER)
     ax.axvline(0, linewidth=1, linestyle="--")
     ax.set_xlim(-100, 100)
-    ax.set_title("Women", fontsize=12, pad=6)
+    ax.set_title("Women", fontsize=18, pad=6)
     ax.set_yticks([0])
     ax.set_yticklabels(["Average"])
     ax.set_ylim(0.5, -0.5)
@@ -288,10 +291,10 @@ def plot_averages_only_women(by_women, title, outfile, xlab="Difference from BLS
     ax.grid(axis="x", linestyle=":", linewidth=0.8, alpha=0.7)
 
     fig.suptitle(title, fontsize=16, fontweight="bold", y=1.05)
-    fig.supxlabel(xlab, fontsize=12, y=0.02)
+    fig.supxlabel(xlab, fontsize=16, y=0.02) # font change
 
     handles2, labels2 = ax.get_legend_handles_labels()
-    fig.legend(handles2, labels2, title="Model", loc="upper left", bbox_to_anchor=(0.5, 1.02), frameon=True, fontsize=9)
+    fig.legend(handles2, labels2, title="Model", loc="upper left", bbox_to_anchor=(0.5, 1.02), frameon=True, fontsize=16)
 
     plt.tight_layout()
     plt.savefig(outfile, bbox_inches="tight")
