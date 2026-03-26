@@ -204,7 +204,7 @@ ax.set_xlim(-100,100)
 
 fig.suptitle(
     "Per Occupation Salary Medians vs BLS",
-    fontsize=40,
+    fontsize=22,
     fontweight="bold",
     y=0.97,
     x=0.5
